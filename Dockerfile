@@ -39,11 +39,12 @@ RUN mkdir -p config themes extensions public media
 # build:   webpack bundles for the storefront and admin.
 RUN npm install \
   && npm run compile \
-  && npm run compile:db 
+  && npm run compile:db \
+  && npm run build
   
 
 # The server listens on $PORT, defaulting to 3000 (bin/lib/normalizePort.js).
 # The previous EXPOSE 80 matched neither the default nor docker-compose.yml.
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm run build && npm run start"]
+CMD ["npm", "run", "start"]
