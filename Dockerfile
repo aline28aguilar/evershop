@@ -46,4 +46,4 @@ RUN npm install \
 # The previous EXPOSE 80 matched neither the default nor docker-compose.yml.
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["sh", "-c", "npm run build && npm run start"]
