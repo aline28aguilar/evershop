@@ -47,4 +47,4 @@ RUN npm install \
 # The previous EXPOSE 80 matched neither the default nor docker-compose.yml.
 EXPOSE 3000
 
-CMD ["sh", "-c", "echo EVERSHOP_HOME_URL=$EVERSHOP_HOME_URL && npm run start"]
+CMD ["sh", "start.sh"]
