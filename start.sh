@@ -1,16 +1,16 @@
 #!/bin/sh
 
+echo "Iniciando EverShop..."
+
 npm run start &
-SERVER_PID=$!
 
-sleep 10
+sleep 15
 
-npm run build
-BUILD_STATUS=$?
+echo "Creando/verificando administrador..."
 
-if [ $BUILD_STATUS -ne 0 ]; then
-  kill $SERVER_PID
-  exit $BUILD_STATUS
-fi
+node ./packages/evershop/dist/bin/user/create.js \
+  --name "$ADMIN_NAME" \
+  --email "$ADMIN_EMAIL" \
+  --password "$ADMIN_PASSWORD"
 
-wait $SERVER_PID
+wait
